@@ -11,6 +11,7 @@ import ItemDetails from "./scenes/itemDetails/itemDetails";
 import Checkout from "./scenes/checkout/Checkout";
 import Confirmation from "./scenes/checkout/Confirmation";
 import Navbar from "./scenes/global/Navbar";
+import CartMenu from "./scenes/global/CartMenu";
 
 //test scroll restoration instead
 const ScrollToTop = () => {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/success" element={<Confirmation />} />
         </Routes>
+        <CartMenu />
       </BrowserRouter>
     </div>
   );
