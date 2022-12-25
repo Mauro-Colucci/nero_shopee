@@ -22,7 +22,6 @@ const CartMenu = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
-
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.count * item.attributes.price,
     0
@@ -62,10 +61,11 @@ const CartMenu = () => {
                 <FlexBox padding="15px 0">
                   <Box flex="1 1 40%">
                     <img
-                      src={`http://localhost:1337/${item?.attributes?.iamge?.data?.attributes?.formats?.medium?.url}`}
+                      src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.small?.url}`}
                       alt={item?.attributes.name}
                       width="123px"
                       height="164px"
+                      style={{ objectFit: "cover" }}
                     />
                   </Box>
                   <Box flex="1 1 60%">
@@ -76,7 +76,7 @@ const CartMenu = () => {
                       <IconButton
                         onClick={() =>
                           //test just sending item.id instead
-                          dispatch(removeFromCart({ id: item.id }))
+                          dispatch(removeFromCart(item))
                         }
                       >
                         <Close />
@@ -92,17 +92,13 @@ const CartMenu = () => {
                         border={`1.5px solid ${shades.neutral[500]}`}
                       >
                         <IconButton
-                          onClick={() =>
-                            dispatch(decreaseCount({ id: item.id }))
-                          }
+                          onClick={() => dispatch(decreaseCount(item))}
                         >
                           <Remove />
                         </IconButton>
                         <Typography>{item.count}</Typography>
                         <IconButton
-                          onClick={() =>
-                            dispatch(increaseCount({ id: item.id }))
-                          }
+                          onClick={() => dispatch(increaseCount(item))}
                         >
                           <Add />
                         </IconButton>
