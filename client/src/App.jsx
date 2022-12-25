@@ -11,6 +11,7 @@ import ItemDetails from "./scenes/itemDetails/itemDetails";
 import Checkout from "./scenes/checkout/Checkout";
 import Confirmation from "./scenes/checkout/Confirmation";
 import Navbar from "./scenes/global/Navbar";
+import Footer from "./scenes/global/Footer";
 import CartMenu from "./scenes/global/CartMenu";
 
 //test scroll restoration instead
@@ -35,6 +36,7 @@ function App() {
           <Route path="/checkout/success" element={<Confirmation />} />
         </Routes>
         <CartMenu />
+        <Footer />
       </BrowserRouter>
     </div>
   );
